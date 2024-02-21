@@ -26,6 +26,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 
     <script src="https://unpkg.com/@descope/web-js-sdk@1.10.0/dist/index.umd.js"></script>  
+
+    <script>
+        const sdk = Descope({ projectId: 'P2cch9UzY4dawVO5pnR3dTLI8SXG', 
+            persistTokens: true, autoRefresh: true
+        })
+    </script>
 </head>
 <body class="bg-light">
     <!-- Footer-->
