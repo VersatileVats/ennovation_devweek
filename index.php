@@ -178,20 +178,7 @@
 
         <!-- Contact-->
         <section class="page-section" id="login">
-            <div class="container">
-                <!-- <div class="m-auto text-center m-0 mb-3">
-                    <div class="btn-group btn-group-toggle w-50" style="margin-bottom: 20px; text-align: center; padding: 0;" data-toggle="buttons">
-                        <label class="btn btn-secondary">
-                            <input onclick="checkAuth(this)" type="radio" name="authOption" id="signup" autocomplete="off" checked> Signup
-                        </label>
-                        <label class="btn btn-secondary active">
-                            <input onclick="checkAuth(this)" type="radio" name="authOption" id="login" autocomplete="off">Login
-                        </label>
-                    </div>
-                </div> -->
-                <!-- signup form -->
-                <!-- login form -->
-
+            <div class="container" style="width: 90%; height: 90%;">
             </div>
         </section>
 
