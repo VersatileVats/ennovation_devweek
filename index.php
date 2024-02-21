@@ -178,7 +178,7 @@
 
         <!-- Contact-->
         <section class="page-section" id="login">
-            <div class="container" id="loginForm" style="width: 90%; height: 90%;">
+            <div class="container" id="loginForm" style="width: 80%; height: 90%; border-radius: 4px">
             </div>
         </section>
 
