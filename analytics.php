@@ -43,7 +43,7 @@
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark me-3" href="./products.php" target="_self">Products Page</a>
                 </div>
-                <div class="col-lg-4 text-lg-end" onclick="logout()">Logout</div>
+                <div class="col-lg-4 text-lg-end" onclick="logout()"><u>Logout</u></div>
             </div>
         </div>
     </footer>
