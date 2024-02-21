@@ -24,6 +24,8 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+
+    <script src="https://unpkg.com/@descope/web-js-sdk@1.10.0/dist/index.umd.js"></script>    
 </head>
 <body>
     <footer class="footer py-4 bg-warning">
@@ -108,6 +110,11 @@
         </div>
     </div>
     
+    <!-- descope script -->
+    <script>
+        sdk.refresh()
+    </script>
+
     <script>
         let SERVER = "<?php echo getenv("server_url") ?>"
         SERVER = SERVER[SERVER.length - 1] === "/" ? SERVER.slice(0,SERVER.length - 1) : SERVER
