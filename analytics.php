@@ -41,6 +41,7 @@
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark me-3" href="./products.php" target="_self">Products Page</a>
                 </div>
+                <div class="col-lg-4 text-lg-end">Logout</div>
             </div>
         </div>
     </footer>
@@ -116,6 +117,8 @@
         </div>
     </div>
     
+    <script src="./js/script.js"></script>
+
     <!-- descope script -->
     <script>
         sdk.refresh()
