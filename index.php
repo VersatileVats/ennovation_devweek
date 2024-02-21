@@ -247,11 +247,11 @@
             container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in"></descope-wc>';
   
             const wcElement = document.getElementsByTagName('descope-wc')[0];
-            const onSuccess = (e) => {
+            const onSuccess = async (e) => {
               console.log(e),
               sdk.refresh(),
-              window.sessionStorage.setItem("brand", getBrand(sdk, "brandName")),
-              window.sessionStorage.setItem("email", getBrand(sdk, "email"))
+              window.sessionStorage.setItem("brand", await getBrand(sdk, "brandName")),
+              window.sessionStorage.setItem("email", await getBrand(sdk, "email"))
               window.location.replace('./products.php')
             };
             const onError = (err) => console.log(err);
