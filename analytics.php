@@ -25,6 +25,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 
+    <script src="./js/script.js"></script>
+
     <script src="https://unpkg.com/@descope/web-js-sdk@1.10.0/dist/index.umd.js"></script>    
 
     <script>
@@ -41,7 +43,7 @@
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark me-3" href="./products.php" target="_self">Products Page</a>
                 </div>
-                <div class="col-lg-4 text-lg-end">Logout</div>
+                <div class="col-lg-4 text-lg-end" onclick="logout()">Logout</div>
             </div>
         </div>
     </footer>
@@ -116,8 +118,6 @@
             </div>
         </div>
     </div>
-    
-    <script src="./js/script.js"></script>
 
     <!-- descope script -->
     <script>
