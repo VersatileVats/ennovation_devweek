@@ -177,8 +177,8 @@
         </div>
 
         <!-- Contact-->
-        <section class="page-section">
-            <div class="container" id="login" style="width: 90%; height: 90%;">
+        <section class="page-section" id="login">
+            <div class="container" id="loginForm" style="width: 90%; height: 90%;">
             </div>
         </section>
 
@@ -240,7 +240,7 @@
 
         // either the sessionToken is not there or has been expired
         if (!sessionToken || notValidToken) {
-            var container = document.getElementById('login');
+            var container = document.getElementById('loginForm');
             container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in" form=\'{"buyerDOB": "20 Dec 2018"}\'></descope-wc>';
   
             const wcElement = document.getElementsByTagName('descope-wc')[0];
