@@ -42,6 +42,7 @@
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark" href="./analytics.php" target="_self">Analytics Page</a>
                 </div>
+                <div class="col-lg-4 text-lg-end">Logout</div>
             </div>
         </div>
     </footer>
@@ -138,6 +139,8 @@
     <!--TFJS modules for the Object Detection Methods-->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
+    <script src="./js/script.js"></script>
 
     <!-- descope script -->
     <script>
