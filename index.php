@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Openshift | Home</title>
+        <title>Ennovation | Home</title>
 
         <script>
-            if (window.sessionStorage.getItem("email") && window.sessionStorage.getItem("pwd")) {
+            if (window.sessionStorage.getItem("email")) {
                 window.location.href = "./products.php"
             }
         </script>
@@ -33,7 +33,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">Openshift Hub</a>
+                <a class="navbar-brand" href="#page-top">Ennovation</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -52,7 +52,7 @@
         <header class="masthead d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
             <div class="container">
                 <div class="masthead-subheading">Where shops transform to brands</div>
-                <div class="masthead-subheading text-uppercase">Welcome to Openshift Hub</div>
+                <div class="masthead-subheading text-uppercase">Welcome to Ennovation</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Know more</a>
             </div>
         </header>
@@ -108,7 +108,7 @@
                                 <h4>Signup</h4>
                                 <h4 class="subheading">Create your account</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Join Openshift Hub by first signing in. Create your account as a brand, provide us with your name, category, and contact details.</p></div>
+                            <div class="timeline-body"><p class="text-muted">Join Ennovation by first signing in. Create your account as a brand, provide us with your name, category, and contact details.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
@@ -186,7 +186,7 @@
         <footer class="footer py-4 bg-warning">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Openshift Hub</div>
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Ennovation Hub</div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -212,11 +212,16 @@
         const getData = async (sdk) => {
             const me = await sdk.me()
             console.log(me.data)
+            return me.data()
         }
 
         getData(sdk)
+
+        let refreshToken = sdk.getRefreshToken()
         console.log("Refresh Token is\n\n" + sdk.getRefreshToken())
-        const refreshToken = sdk.getRefreshToken()
+
+        // setting up the refresh token for the current session
+        if(refreshToken != "") refreshToken = window.sessionStorage.setItem("refresh_token", refreshToken)
 
         const logout = async(refreshToken) => {
             console.log("Logging you out of all the sessions")
@@ -228,26 +233,26 @@
         console.log(`Session token is: \n\n${sessionToken}`)
         var notValidToken
 
-        // Sessiontoken is there if the user is logged in
+        // Session token is there if the user is logged in
         if (sessionToken) {
             // checking if the JWT is expired or not? (boolean value)
             notValidToken = sdk.isJwtExpired(sessionToken)
             console.log(`Notvalid token is: ${notValidToken}`)
 
             // console.log("Logging out of all sessions:")
-            logout(refreshToken)
+            // logout(refreshToken)
         }
 
         // either the sessionToken is not there or has been expired
         if (!sessionToken || notValidToken) {
             var container = document.getElementById('loginForm');
-            container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in" form=\'{"buyerDOB": "20 Dec 2018"}\'></descope-wc>';
+            container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in"></descope-wc>';
   
             const wcElement = document.getElementsByTagName('descope-wc')[0];
             const onSuccess = (e) => {
               console.log(e),
               sdk.refresh(),
-              alert("SUCCESS")
+              window.location.replace('./products.php')
             };
             const onError = (err) => console.log(err);
   
