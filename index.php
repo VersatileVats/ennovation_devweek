@@ -209,19 +209,17 @@
         // this line will tell me the various functions associated with the SDK
         console.log(sdk)
 
-        const getData = async (sdk) => {
+        const getBrand = async (sdk, need) => {
             const me = await sdk.me()
             console.log(me.data)
-            return me.data()
+            return need === "email" ? me.data.loginIds[0] : me.data.givenName
         }
-
-        getData(sdk)
 
         let refreshToken = sdk.getRefreshToken()
         console.log("Refresh Token is\n\n" + sdk.getRefreshToken())
 
         // setting up the refresh token for the current session
-        if(refreshToken != "") refreshToken = window.sessionStorage.setItem("refresh_token", refreshToken)
+        if(refreshToken != "") window.sessionStorage.setItem("refresh_token", refreshToken)
 
         const logout = async(refreshToken) => {
             console.log("Logging you out of all the sessions")
@@ -252,6 +250,8 @@
             const onSuccess = (e) => {
               console.log(e),
               sdk.refresh(),
+              window.sessionStorage.setItem("brand", getBrand(sdk, "brandName")),
+              window.sessionStorage.setItem("email", getBrand(sdk, "email"))
               window.location.replace('./products.php')
             };
             const onError = (err) => console.log(err);
