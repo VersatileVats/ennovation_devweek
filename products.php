@@ -24,6 +24,8 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+
+    <script src="https://unpkg.com/@descope/web-js-sdk@1.10.0/dist/index.umd.js"></script>  
 </head>
 <body class="bg-light">
     <!-- Footer-->
@@ -130,6 +132,11 @@
     <!--TFJS modules for the Object Detection Methods-->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
+    <!-- descope script -->
+    <script>
+        sdk.refresh()
+    </script>
     
     <script>
         let SERVER = "<?php echo getenv("server_url") ?>"
