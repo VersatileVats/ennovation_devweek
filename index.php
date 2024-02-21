@@ -177,8 +177,8 @@
         </div>
 
         <!-- Contact-->
-        <section class="page-section" id="login">
-            <div class="container" style="width: 90%; height: 90%;">
+        <section class="page-section">
+            <div class="container" id="login" style="width: 90%; height: 90%;">
             </div>
         </section>
 
