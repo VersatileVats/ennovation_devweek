@@ -44,7 +44,7 @@
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark" href="./analytics.php" target="_self">Analytics Page</a>
                 </div>
-                <div class="col-lg-4 text-lg-end" onclick="logout()"><u>Logout</u></div>
+                <div class="col-lg-4 text-lg-end" onclick="logout()" style="cursor: pointer"><u>Logout</u></div>
             </div>
         </div>
     </footer>
