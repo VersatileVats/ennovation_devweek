@@ -258,7 +258,7 @@
 
         // either the sessionToken is not there or has been expired
         if (!sessionToken || notValidToken) {
-            var container = document.getElementById('container');
+            var container = document.getElementById('login');
             container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in" form=\'{"buyerDOB": "20 Dec 2018"}\'></descope-wc>';
   
             const wcElement = document.getElementsByTagName('descope-wc')[0];
