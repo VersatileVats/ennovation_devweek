@@ -220,13 +220,7 @@
 
         // setting up the refresh token for the current session
         if(refreshToken != "") window.sessionStorage.setItem("refresh_token", refreshToken)
-
-        const logout = async(refreshToken) => {
-            console.log("Logging you out of all the sessions")
-            const logout = await sdk.logoutAll()
-            console.log("LOGOUT DONE")
-        }
-
+        
         const sessionToken = sdk.getSessionToken()
         console.log(`Session token is: \n\n${sessionToken}`)
         var notValidToken
@@ -236,9 +230,6 @@
             // checking if the JWT is expired or not? (boolean value)
             notValidToken = sdk.isJwtExpired(sessionToken)
             console.log(`Notvalid token is: ${notValidToken}`)
-
-            // console.log("Logging out of all sessions:")
-            // logout(refreshToken)
         }
 
         // either the sessionToken is not there or has been expired
