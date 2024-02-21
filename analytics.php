@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Openshitf | Stats</title>
+    <title>Ennovation | Stats</title>
 
     <!-- blocking the unauthorized ccess -->
     <script>
-        if (!window.sessionStorage.getItem("email") && !window.sessionStorage.getItem("pwd")) {
+        if (!window.sessionStorage.getItem("email")) {
             window.location.href = "./"
         }
     </script>
