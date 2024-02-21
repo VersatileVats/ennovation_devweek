@@ -69,4 +69,9 @@ const logout = async(refreshToken) => {
     console.log("Logging you out of all the sessions")
     const logout = await sdk.logoutAll()
     console.log("LOGOUT DONE")
+
+    window.sessionStorage.removeItem("email")
+    window.sessionStorage.removeItem("brand")
+
+    location.reload()
 }
