@@ -180,8 +180,8 @@ async function authenticate(el) {
     }
 }
 
-document.querySelector("#loginForm").addEventListener("submit", (el) => authenticate(el))
-document.querySelector("#signupForm").addEventListener("submit", (el) => authenticate(el))
+// document.querySelector("#loginForm").addEventListener("submit", (el) => authenticate(el))
+// document.querySelector("#signupForm").addEventListener("submit", (el) => authenticate(el))
 
 document.querySelector("#signupPwd").addEventListener("keypress", async (el) => {
     el.preventDefault()
