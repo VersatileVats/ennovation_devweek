@@ -64,3 +64,9 @@ async function serverCall(request, endpoint) {
     .then(result => {return result})
     .catch(error => {return `ERROR:Server error`});
 }
+
+const logout = async(refreshToken) => {
+    console.log("Logging you out of all the sessions")
+    const logout = await sdk.logoutAll()
+    console.log("LOGOUT DONE")
+}
