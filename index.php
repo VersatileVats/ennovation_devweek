@@ -179,11 +179,6 @@
         <!-- Contact-->
         <section class="page-section" id="login">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Authenticate Me</h2>
-                    <h3 class="section-subheading text-muted">Be a part of this great product</h3>
-                </div>
-
                 <!-- <div class="m-auto text-center m-0 mb-3">
                     <div class="btn-group btn-group-toggle w-50" style="margin-bottom: 20px; text-align: center; padding: 0;" data-toggle="buttons">
                         <label class="btn btn-secondary">
