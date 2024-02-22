@@ -4,8 +4,9 @@
         <meta charset="utf-8" />
         <title>Ennovation | Home</title>
 
+        <!-- redirecting -->
         <script>
-            if (window.sessionStorage.getItem("email")) {
+            if (!window.sessionStorage.getItem("email")) {
                 window.location.href = "./products.php"
             }
         </script>
