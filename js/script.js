@@ -70,10 +70,8 @@ const logout = async(refreshToken) => {
     const logout = await sdk.logoutAll()
     console.log("LOGOUT DONE")
 
-    window.sessionStorage.removeItem("email")
-    window.sessionStorage.removeItem("brand")
-    window.sessionStorage.removeItem("role")
-    window.sessionStorage.setItem("refresh_token")
+    // clearing off all of the session variables
+    window.sessionStorage.clear()
 
     location.reload()
 }
