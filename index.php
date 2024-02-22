@@ -28,6 +28,12 @@
         <!-- Descope sdks -->
         <script src="https://unpkg.com/@descope/web-component@3.8.4/dist/index.js"></script>
         <script src="https://unpkg.com/@descope/web-js-sdk@1.10.0/dist/index.umd.js"></script>    
+
+        <script>
+            let SERVER = "<?php echo getenv("server_url") ?>"
+            SERVER = SERVER[SERVER.length - 1] === "/" ? SERVER.slice(0,SERVER.length - 1) : SERVER
+            console.log("Setting up the server variable: " + SERVER)
+        </script>
     </head>
     
     <body id="page-top" style="position: relative;">
@@ -239,8 +245,9 @@
             
             // checking whether the refresh_token is there or not?
             if(refreshToken != "") {
-                await getBrand(sdk, "brandName")
-                await getBrand(sdk, "email")
+                getBrand(sdk, "brandName")
+                    .then(() => getBrand(sdk, "email"))
+                    .catch(error => console.error('Error fetching brand details:', error));
             }
             
             var container = document.getElementById('loginForm');
@@ -265,9 +272,6 @@
     <script>
         // Refreshing the descope SDK
         sdk.refresh()
-        let SERVER = "<?php echo getenv("server_url") ?>"
-        SERVER = SERVER[SERVER.length - 1] === "/" ? SERVER.slice(0,SERVER.length - 1) : SERVER
-        console.log("Setting up the server variable: " + SERVER)
     </script>
     <script src="./js/script.js"></script>
 </html>
