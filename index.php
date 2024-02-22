@@ -242,12 +242,16 @@
 
         // either the sessionToken is not there or has been expired
         if (!sessionToken || notValidToken) {
+
+            console.log("LINE 246")
             
             // checking whether the refresh_token is there or not?
             if(refreshToken != "") {
+                console.log("Line 250")
                 getBrand(sdk, "brandName")
                     .then(() => getBrand(sdk, "email"))
                     .catch(error => console.error('Error fetching brand details:', error));
+                console.log("LINE 254")
             }
             
             var container = document.getElementById('loginForm');
