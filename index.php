@@ -212,6 +212,8 @@
         const getBrand = async (sdk, need) => {
             const me = await sdk.me()
             console.log(me.data)
+            console.log("Role is: " + me.data.roleNames[0])
+            window.sessionStorage("role", me.data.roleNames[0])
             return need === "email" ? me.data.loginIds[0] : me.data.givenName
         }
 
