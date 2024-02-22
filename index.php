@@ -6,7 +6,7 @@
 
         <!-- redirecting -->
         <script>
-            if (!window.sessionStorage.getItem("email")) {
+            if (window.sessionStorage.getItem("email")) {
                 window.location.href = "./products.php"
             }
         </script>
