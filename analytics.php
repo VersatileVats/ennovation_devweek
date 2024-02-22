@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <title>Ennovation | Stats</title>
 
-    <!-- blocking the unauthorized ccess -->
+    <!-- blocking the unauthorized access (checking the role too) -->
     <script>
-        if (!window.sessionStorage.getItem("email")) {
+        if (!window.sessionStorage.getItem("email") || !window.sessionStorage.getItem("role") || window.sessionStorage.getItem("role") == "Seller") {
             window.location.href = "./"
         }
     </script>
