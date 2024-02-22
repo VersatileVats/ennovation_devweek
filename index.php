@@ -238,22 +238,19 @@
             // checking if the JWT is expired or not? (boolean value)
             notValidToken = sdk.isJwtExpired(sessionToken)
             console.log(`Notvalid token is: ${notValidToken}`)
+
+            // checking whether the refresh_token is there or not?
+            if(refreshToken != "") {
+                console.log("Line 244")
+                getBrand(sdk, "brandName")
+                    .then(() => getBrand(sdk, "email"))
+                    .catch(error => console.error('Error fetching brand details:', error));
+                console.log("LINE 248")
+            }
         }
 
         // either the sessionToken is not there or has been expired
         if (!sessionToken || notValidToken) {
-
-            console.log("LINE 246")
-            
-            // checking whether the refresh_token is there or not?
-            if(refreshToken != "") {
-                console.log("Line 250")
-                getBrand(sdk, "brandName")
-                    .then(() => getBrand(sdk, "email"))
-                    .catch(error => console.error('Error fetching brand details:', error));
-                console.log("LINE 254")
-            }
-            
             var container = document.getElementById('loginForm');
             container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in"></descope-wc>';
   
