@@ -222,10 +222,7 @@
         console.log("Refresh Token is\n\n" + sdk.getRefreshToken())
 
         // setting up the refresh token for the current session
-        if(refreshToken != "") {
-            window.sessionStorage.setItem("refresh_token", refreshToken)
-            window.location.replace("./products.php")
-        }
+        if(refreshToken != "") window.sessionStorage.setItem("refresh_token", refreshToken)
         
         const sessionToken = sdk.getSessionToken()
         console.log(`Session token is: \n\n${sessionToken}`)
