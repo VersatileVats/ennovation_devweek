@@ -265,7 +265,7 @@
                     .then(() => console.log)
                     .catch(error => console.error('Error fetching brand details: ', error));
                 console.log("LINE 268")
-                // window.location.replace('./products.php')
+                window.location.replace('./products.php')
             }
         }
 
