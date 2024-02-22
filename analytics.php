@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-4 text-lg-start" style="font-weight: bold;" id="brandName"></div>
-                <div class="col-lg-4 text-lg-end">
+                <div class="col-lg-4 text-lg-center">
                     <a class="link-dark me-3" href="./products.php" target="_self">Products Page</a>
                 </div>
                 <div class="col-lg-4 text-lg-end" onclick="logout()" style="cursor: pointer"><u>Logout</u></div>
