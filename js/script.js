@@ -72,6 +72,8 @@ const logout = async(refreshToken) => {
 
     window.sessionStorage.removeItem("email")
     window.sessionStorage.removeItem("brand")
+    window.sessionStorage.removeItem("role")
+    window.sessionStorage.setItem("refresh_token")
 
     location.reload()
 }
