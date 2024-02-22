@@ -206,7 +206,6 @@
             persistTokens: true, autoRefresh: true
         })
 
-
         // this line will tell me the various functions associated with the SDK
         console.log(sdk)
 
@@ -237,6 +236,13 @@
 
         // either the sessionToken is not there or has been expired
         if (!sessionToken || notValidToken) {
+            
+            // checking whether the refresh_token is there or not?
+            if(refreshToken != "") {
+                await getBrand(sdk, "brandName")
+                await getBrand(sdk, "email")
+            }
+            
             var container = document.getElementById('loginForm');
             container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in"></descope-wc>';
   
