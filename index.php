@@ -215,13 +215,32 @@
         // this line will tell me the various functions associated with the SDK
         console.log(sdk)
 
-        const getBrand = async (sdk, need) => {
-            const me = await sdk.me()
-            console.log(me.data)
-            console.log("Role is: " + me.data.roleNames[0])
-            window.sessionStorage.setItem("role", me.data.roleNames[0])
-            return need === "email" ? me.data.loginIds[0] : me.data.givenName
-        }
+        // const getBrand = async (sdk, need) => {
+        //     const me = await sdk.me()
+        //     console.log(me.data)
+        //     console.log("Role is: " + me.data.roleNames[0])
+        //     window.sessionStorage.setItem("role", me.data.roleNames[0])
+        //     return need === "email" ? me.data.loginIds[0] : me.data.givenName
+        // }
+
+        const getBrand = (sdk) => {
+            return sdk.me()
+                .then(me => {
+                    console.log(me.data);
+                    console.log("Role is: " + me.data.roleNames[0]);
+                    window.sessionStorage.setItem("brand", me.data.givenName)
+                    window.sessionStorage.setItem("email", me.data.loginIds[0])
+                    window.sessionStorage.setItem("role", me.data.roleNames[0]);
+                    console.log("Returning Success")
+                    return "Success"
+                })
+                .catch(error => {
+                    console.error('Error fetching brand details:', error);
+                    // Handle error, you could return null or a default value
+                    return "error"; // or throw error; depending on how you want to handle the failure.
+                });
+        };
+
 
         let refreshToken = sdk.getRefreshToken()
         console.log("Refresh Token is\n\n" + sdk.getRefreshToken())
@@ -241,11 +260,11 @@
 
             // checking whether the refresh_token is there or not?
             if(refreshToken != "") {
-                console.log("Line 244")
-                getBrand(sdk, "brandName")
-                    .then(() => getBrand(sdk, "email"))
-                    .catch(error => console.error('Error fetching brand details:', error));
-                console.log("LINE 248")
+                console.log("Line 263")
+                getBrand(sdk)
+                    .then(() => console.log)
+                    .catch(error => console.error('Error fetching brand details: ', error));
+                console.log("LINE 268")
             }
         }
 
@@ -255,11 +274,18 @@
             container.innerHTML = '<descope-wc project-id="P2cch9UzY4dawVO5pnR3dTLI8SXG" flow-id="sign-up-or-in"></descope-wc>';
   
             const wcElement = document.getElementsByTagName('descope-wc')[0];
-            const onSuccess = async (e) => {
+            // const onSuccess = async (e) => {
+            //   console.log(e),
+            //   sdk.refresh(),
+            //   window.sessionStorage.setItem("brand", await getBrand(sdk, "brandName")),
+            //   window.sessionStorage.setItem("email", await getBrand(sdk, "email"))
+            //   window.location.replace('./products.php')
+            // };
+
+            const onSuccess = (e) => {
               console.log(e),
               sdk.refresh(),
-              window.sessionStorage.setItem("brand", await getBrand(sdk, "brandName")),
-              window.sessionStorage.setItem("email", await getBrand(sdk, "email"))
+              getBrand(sdk),
               window.location.replace('./products.php')
             };
             const onError = (err) => console.log(err);
