@@ -6,7 +6,7 @@
 
     <!-- blocking the unauthorized ccess -->
     <script>
-        if (!window.sessionStorage.getItem("email")) {
+        if (!window.sessionStorage.getItem("email") || !window.sessionStorage.getItem("role") || window.sessionStorage.getItem("role") == "Seller") {
             window.location.href = "./"
         }
     </script>
