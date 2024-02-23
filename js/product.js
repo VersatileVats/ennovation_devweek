@@ -158,95 +158,99 @@ document.querySelector("#submitProduct").addEventListener("click", async (el) =>
 })
 
 async function populateProducts() {
-    let products = await serverCall({
-        "email": window.sessionStorage.getItem("email")
-    }, "/fetchProducts");
-
-    document.querySelector("#loading").style.display = "none";
-    document.querySelector(".page-section").style.display = "block";
-
-    if(products.includes("ERROR")) {
-        document.querySelector("#productCards").innerHTML = 
-        `<div class="col-lg-4 col-sm-6 m-auto mb-4">
-            <div class="portfolio-item">
-                <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">0 products have been added</div>
-                    <div class="portfolio-caption-subheading text-muted">Click on Add More to get started</div>
-                </div>
-            </div>
-        </div>`;
-    } else {
-        products = JSON.parse(products)
-        for(let product in products) {
-            
-            let gender = products[product].pGender;
-            if(gender === "f") gender = "Female"
-            else if(gender == "m") gender = "Male"
-            else gender = "Male & female"
-            
-            let ageGroup = products[product].pAgeGroup;
-            if(ageGroup === "kids") ageGroup = "Kids"
-            else if(ageGroup === "adult") ageGroup = "Adults"
-            else if(ageGroup === "old") ageGroup = "Old"
-            else ageGroup = "Everyone"
-            
-            // checking the PICKUP attribute for a product
-            let pickupImg = ""
-            if(products[product].pickup) {
-                pickupImg = `<img width="40" height="40" src="https://img.icons8.com/cotton/40/pickup.png" alt="pickup"/>`
-            }
-            
-            document.querySelector("#productCards").innerHTML += 
+    try {
+        let products = await serverCall({
+            "email": window.sessionStorage.getItem("email")
+        }, "/fetchProducts");
+    
+        document.querySelector("#loading").style.display = "none";
+        document.querySelector(".page-section").style.display = "block";
+    
+        if(products.includes("ERROR")) {
+            document.querySelector("#productCards").innerHTML = 
             `<div class="col-lg-4 col-sm-6 m-auto mb-4">
                 <div class="portfolio-item">
-                    <a class="portfolio-link" style="display: flex; justify-content: center; position: relative">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><span id="delete" style="cursor: pointer"><i class="fas fa-trash fa-3x"></i></span></div>
-                        </div>
-                        <img class="img-fluid" style="height:300px;" src="${products[product]["pLoc"]}" />
-                        <p style="position: absolute; top: 0; left: 0; border: 2px dashed black; border-radius: 5px; padding: 2px; font-weight: bold; color: black">$ ${products[product]["pPrice"]}</p>
-                    </a>
-                    <div class="portfolio-caption" style="background: none">
-                        <div class="portfolio-caption-heading">${products[product]["pName"]}</div>
-                        <div class="portfolio-caption-subheading text-muted">${pickupImg} ${products[product]["pDesc"]}</div>
-                        <p style="font-size: 0.8rem;" class="pt-1">
-                            <span style="float: left">Gender: ${gender}</span>
-                            <span style="float: right">Age group: ${ageGroup}</span>
-                        </p>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">0 products have been added</div>
+                        <div class="portfolio-caption-subheading text-muted">Click on Add More to get started</div>
                     </div>
                 </div>
-            </div>`
-        }
-        document.querySelectorAll("#delete").forEach(node => {
-            node.addEventListener("click", async () => {
-                const userChoiceDelete = prompt("Do you want to delete the product?", "No", "Yes")
-                if( userChoiceDelete != null && userChoiceDelete.toLowerCase() === "yes") {
-                    
-                    document.querySelector("#loading").style.display = "flex"
-                    document.querySelector(".page-section").style.display = "none"
-                    document.querySelector("#loadingText").textContent = "Deleting the product"
-                    
-                    const del = await serverCall({
-                        "pName": node.parentElement.parentElement.parentElement.parentElement.lastElementChild.firstElementChild.textContent,
-                        "bEmail": window.sessionStorage.getItem("email"),
-                        "pLoc": node.parentElement.parentElement.parentElement.parentElement.firstElementChild.querySelector("img").src
-                    }, "/deleteProduct")
-                    
-                    // unlinking the image
-                    var requestOptions = {
-                      method: 'GET',
-                      redirect: 'follow'
-                    };
-                    
-                    await fetch(`https://versatilevats.com/ennovation/server.php?action=unlink&file=${(node.parentElement.parentElement.parentElement.parentElement.firstElementChild.querySelector("img").src).split(".com")[1]}`, requestOptions)
-                    
-                    if(del.includes("ERROR")) {
-                        alert(del.split(":")[1])
-                    } else location.reload()
-                    
-                }   
+            </div>`;
+        } else {
+            products = JSON.parse(products)
+            for(let product in products) {
+                
+                let gender = products[product].pGender;
+                if(gender === "f") gender = "Female"
+                else if(gender == "m") gender = "Male"
+                else gender = "Male & female"
+                
+                let ageGroup = products[product].pAgeGroup;
+                if(ageGroup === "kids") ageGroup = "Kids"
+                else if(ageGroup === "adult") ageGroup = "Adults"
+                else if(ageGroup === "old") ageGroup = "Old"
+                else ageGroup = "Everyone"
+                
+                // checking the PICKUP attribute for a product
+                let pickupImg = ""
+                if(products[product]['pickup']) {
+                    pickupImg = `<img width="40" height="40" src="https://img.icons8.com/cotton/40/pickup.png" alt="pickup"/>`
+                }
+                
+                document.querySelector("#productCards").innerHTML += 
+                `<div class="col-lg-4 col-sm-6 m-auto mb-4">
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" style="display: flex; justify-content: center; position: relative">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><span id="delete" style="cursor: pointer"><i class="fas fa-trash fa-3x"></i></span></div>
+                            </div>
+                            <img class="img-fluid" style="height:300px;" src="${products[product]['pLoc']}" />
+                            <p style="position: absolute; top: 0; left: 0; border: 2px dashed black; border-radius: 5px; padding: 2px; font-weight: bold; color: black">$ ${products[product]['pPrice']}</p>
+                        </a>
+                        <div class="portfolio-caption" style="background: none">
+                            <div class="portfolio-caption-heading">${products[product]['pName']}</div>
+                            <div class="portfolio-caption-subheading text-muted">${pickupImg} ${products[product]['pDesc']}</div>
+                            <p style="font-size: 0.8rem;" class="pt-1">
+                                <span style="float: left">Gender: ${gender}</span>
+                                <span style="float: right">Age group: ${ageGroup}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>`
+            }
+            document.querySelectorAll("#delete").forEach(node => {
+                node.addEventListener("click", async () => {
+                    const userChoiceDelete = prompt("Do you want to delete the product?", "No", "Yes")
+                    if( userChoiceDelete != null && userChoiceDelete.toLowerCase() === "yes") {
+                        
+                        document.querySelector("#loading").style.display = "flex"
+                        document.querySelector(".page-section").style.display = "none"
+                        document.querySelector("#loadingText").textContent = "Deleting the product"
+                        
+                        const del = await serverCall({
+                            "pName": node.parentElement.parentElement.parentElement.parentElement.lastElementChild.firstElementChild.textContent,
+                            "bEmail": window.sessionStorage.getItem("email"),
+                            "pLoc": node.parentElement.parentElement.parentElement.parentElement.firstElementChild.querySelector("img").src
+                        }, "/deleteProduct")
+                        
+                        // unlinking the image
+                        var requestOptions = {
+                          method: 'GET',
+                          redirect: 'follow'
+                        };
+                        
+                        await fetch(`https://versatilevats.com/ennovation/server.php?action=unlink&file=${(node.parentElement.parentElement.parentElement.parentElement.firstElementChild.querySelector("img").src).split(".com")[1]}`, requestOptions)
+                        
+                        if(del.includes("ERROR")) {
+                            alert(del.split(":")[1])
+                        } else location.reload()
+                        
+                    }   
+                })
             })
-        })
+        }
+    } catch(err) {
+        console.log(err)
     }
 }
 
