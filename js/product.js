@@ -16,11 +16,10 @@ async function serverCall(request, endpoint) {
     return await fetch(`${SERVER}${endpoint}`, requestOptions)
     .then(response => response.text())
     .then(result => {return result})
-    .catch(error => {return `ERROR:Server error`});
+    .catch(error => {return `ERROR: {error}`});
 }
 
-document.querySelector("#addProductBtn").addEventListener("click", (el) => {
-    // el.target.style.display = "none"
+document.querySelector("#addProductBtn").addEventListener("click", () => {
     if(document.querySelector("#addProductForm").style.display === "none") {
         document.querySelector("#addProductForm").style.display = "block"
     } else {
@@ -281,6 +280,8 @@ document.querySelector("#productImage").addEventListener("change", async (event)
 
         console.log(`Temp file name is: ${tmpFileName}`)
 
+        console.log(`Model value is: ${MODEL}`)
+        
         // Step2: Run the inference on the image URL via the NODE application
         console.log(`Calling ${MODEL}?image=${tmpFileName}`)
         const res = await fetch(`${MODEL}?image=${tmpFileName}`)
