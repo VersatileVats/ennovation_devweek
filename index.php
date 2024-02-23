@@ -31,7 +31,7 @@
         <script src="https://unpkg.com/@descope/web-js-sdk@1.10.0/dist/index.umd.js"></script>    
 
         <script>
-            let SERVER = "<?php echo getenv("server_url") ?>"
+            let SERVER = "https://server-chamanrock-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"
             SERVER = SERVER[SERVER.length - 1] === "/" ? SERVER.slice(0,SERVER.length - 1) : SERVER
             console.log("Setting up the server variable: " + SERVER)
         </script>
