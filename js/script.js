@@ -1,7 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
 
-    console.log(`Script JS Page (Server Value): ${SERVER}`)
-
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
@@ -62,7 +60,7 @@ async function serverCall(request, endpoint) {
     return await fetch(`${SERVER}${endpoint}`, requestOptions)
     .then(response => response.text())
     .then(result => {return result})
-    .catch(error => {return `ERROR:Server error`});
+    .catch(error => {return `ERROR: ${error}`});
 }
 
 const logout = async(refreshToken) => {
