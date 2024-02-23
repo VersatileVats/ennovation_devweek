@@ -147,14 +147,6 @@
     <script>
         sdk.refresh()
     </script>
-    
-    <script>
-        let SERVER = "<?php echo getenv("server_url") ?>"
-        SERVER = SERVER[SERVER.length - 1] === "/" ? SERVER.slice(0,SERVER.length - 1) : SERVER
-        let MODEL = "<?php echo getenv("model_url") ?>"
-        MODEL = MODEL[MODEL.length - 1] === "/" ? MODEL.slice(0,MODEL.length - 1) : MODEL
-        console.log("Setting up the server variable: " + SERVER + " and model url is: " + MODEL)
-    </script>
     <script type="module" src="./js/product.js"></script>
 </body>
 </html>
