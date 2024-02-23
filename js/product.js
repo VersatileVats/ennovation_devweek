@@ -180,12 +180,12 @@ async function populateProducts() {
             products = JSON.parse(products)
             for(let product in products) {
                 
-                let gender = products[product].pGender;
+                let gender = products[product]['pGender'];
                 if(gender === "f") gender = "Female"
                 else if(gender == "m") gender = "Male"
                 else gender = "Male & female"
                 
-                let ageGroup = products[product].pAgeGroup;
+                let ageGroup = products[product]['pAgeGroup'];
                 if(ageGroup === "kids") ageGroup = "Kids"
                 else if(ageGroup === "adult") ageGroup = "Adults"
                 else if(ageGroup === "old") ageGroup = "Old"
