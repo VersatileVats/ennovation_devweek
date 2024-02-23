@@ -193,8 +193,8 @@ async function populateProducts() {
                 
                 // checking the PICKUP attribute for a product
                 let pickupImg = ""
-                if(products[product]['pickup']) {
-                    pickupImg = `<img width="40" height="40" src="https://img.icons8.com/cotton/40/pickup.png" alt="pickup"/>`
+                if (products[product] && products[product]['pickup']) {
+                    pickupImg = '<img width="40" height="40" src="https://img.icons8.com/cotton/40/pickup.png" alt="pickup">';
                 }
                 
                 document.querySelector("#productCards").innerHTML += 
