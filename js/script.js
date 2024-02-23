@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 });
 
-async function serverCall(request, endpoint) {
+const serverCall = async(request, endpoint) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -73,3 +73,5 @@ const logout = async(refreshToken) => {
 
     location.reload()
 }
+
+console.log(logout, serverCall)
