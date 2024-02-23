@@ -1,6 +1,7 @@
-let SERVER = "<?php echo getenv("server_url") ?>"
+let SERVER = "https://server-chamanrock-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"
 SERVER = SERVER[SERVER.length - 1] === "/" ? SERVER.slice(0,SERVER.length - 1) : SERVER
-let MODEL = "<?php echo getenv("model_url") ?>"
+
+let MODEL = "https://ml-model-chamanrock-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"
 MODEL = MODEL[MODEL.length - 1] === "/" ? MODEL.slice(0,MODEL.length - 1) : MODEL
 console.log("Setting up the server variable: " + SERVER + " and model url is: " + MODEL)
 
