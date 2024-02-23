@@ -22,7 +22,7 @@ async function serverCall(request, endpoint) {
     return await fetch(`${SERVER}${endpoint}`, requestOptions)
     .then(response => response.text())
     .then(result => {return result})
-    .catch(error => {return `ERROR: {error}`});
+    .catch(error => {return `ERROR: ${error}`});
 }
 
 document.querySelector("#addProductBtn").addEventListener("click", () => {
@@ -217,7 +217,7 @@ async function populateProducts() {
             </div>`
         }
         document.querySelectorAll("#delete").forEach(node => {
-            node.addEventListener("click", async (el) => {
+            node.addEventListener("click", async () => {
                 const userChoiceDelete = prompt("Do you want to delete the product?", "No", "Yes")
                 if( userChoiceDelete != null && userChoiceDelete.toLowerCase() === "yes") {
                     
