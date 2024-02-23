@@ -126,7 +126,6 @@
     </script>
 
     <script>
-        // let SERVER = "<?php echo getenv("server_url") ?>"
         let SERVER = "<?php echo htmlspecialchars(getenv('server_url'), ENT_QUOTES, 'UTF-8') ?>"
         
         SERVER = SERVER[SERVER.length - 1] === "/" ? SERVER.slice(0,SERVER.length - 1) : SERVER
