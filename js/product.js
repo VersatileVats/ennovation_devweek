@@ -203,12 +203,12 @@ async function populateProducts() {
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><span id="delete" style="cursor: pointer"><i class="fas fa-trash fa-3x"></i></span></div>
                         </div>
-                        <img class="img-fluid" style="height:300px;" src="${products[product].pLoc}" />
-                        <p style="position: absolute; top: 0; left: 0; border: 2px dashed black; border-radius: 5px; padding: 2px; font-weight: bold; color: black">$ ${products[product].pPrice}</p>
+                        <img class="img-fluid" style="height:300px;" src="${products[product]["pLoc"]}" />
+                        <p style="position: absolute; top: 0; left: 0; border: 2px dashed black; border-radius: 5px; padding: 2px; font-weight: bold; color: black">$ ${products[product]["pPrice"]}</p>
                     </a>
                     <div class="portfolio-caption" style="background: none">
-                        <div class="portfolio-caption-heading">${products[product].pName}</div>
-                        <div class="portfolio-caption-subheading text-muted">${pickupImg} ${products[product].pDesc}</div>
+                        <div class="portfolio-caption-heading">${products[product]["pName"]}</div>
+                        <div class="portfolio-caption-subheading text-muted">${pickupImg} ${products[product]["pDesc"]}</div>
                         <p style="font-size: 0.8rem;" class="pt-1">
                             <span style="float: left">Gender: ${gender}</span>
                             <span style="float: right">Age group: ${ageGroup}</span>
