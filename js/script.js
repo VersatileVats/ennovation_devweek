@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener('DOMContentLoaded', () => {
 
     console.log(`Script JS Page (Server Value): ${SERVER}`)
 
