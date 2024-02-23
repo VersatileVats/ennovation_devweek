@@ -37,14 +37,15 @@ document.querySelector("#addProductBtn").addEventListener("click", () => {
 document.querySelector("#submitProduct").addEventListener("click", async (el) => {
     el.preventDefault()
     const formField = ["productTitle", "productDesc","productPrice"]
-    
-    for(let a =0; a<formField.length; a++) {
-        if(document.querySelector(`#${formField[a]}`).value === "") {
-            document.querySelector("#productError").style.visibility = "visible"
-            document.querySelector("#productError").textContent = "Please provide all required fields"
-            return
+
+    for (let field of formField) {
+        if (document.querySelector(`#${field}`).value === "") {
+            document.querySelector("#productError").style.visibility = "visible";
+            document.querySelector("#productError").textContent = "Please provide all required fields";
+            return;
         }
     }
+
     
     // ensuring that the values are not empty
     if(document.querySelector("#gender").value === "default") {
